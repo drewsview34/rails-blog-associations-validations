@@ -7,4 +7,11 @@ class Post < ActiveRecord::Base
 
     validates :name, :content, presence: true
 
+    def tag_ids=(ids)
+        ids.delete("")
+        ids.each do |id|
+            self.tags << Tag.find_by_id(id)
+        end
+    end
+
 end
