@@ -1,9 +1,10 @@
 class Post < ActiveRecord::Base
 
-    has_many :tags
-    has_many :users, through: :tags
+    belongs_to :user
 
-    validates :name, presence: true
-    validates :content, presence: true
+    has_many :post_tags
+    has_many :tags, through: :post_tags
+
+    validates :name, :content, presence: true
 
 end
